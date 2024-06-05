@@ -1,0 +1,1144 @@
+return SingleChildScrollView(
+  child: Column(
+    children: [
+      Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SizedBox(
+              child: Text(
+                'Medecin Général',
+                style: TextStyle(
+                  color: bleu,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: bleu,
+            height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 2.6,
+            width: MediaQuery.of(context).size.width,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _listDoctors.length,
+              itemBuilder: (BuildContext context, int index) {
+                Doctors doctor = _listDoctors[index];
+                print('${doctor}');
+                return Text('$doctor.body');
+              },
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SizedBox(
+              child: Text(
+                'Medecin Pédiatre',
+                style: TextStyle(
+                  color: bleu,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: bleu,
+            height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 2.6,
+            width: MediaQuery.of(context).size.width,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 30,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 160,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 160,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 190,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 190,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SizedBox(
+              child: Text(
+                'Dentiste',
+                style: TextStyle(
+                  color: bleu,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: bleu,
+            height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 2.6,
+            width: MediaQuery.of(context).size.width,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 30,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 160,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 160,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 190,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 425,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 30,
+                        left: 0,
+                        child: Material(
+                          child: Container(
+                            height: 210,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              color: bleu,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        left: 60,
+                        child: Card(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: const DecorationImage(
+                                image:
+                                    AssetImage('assets/images/docto.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 190,
+                        child: SizedBox(
+                          height: 200,
+                          width: 180,
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Dr Rakoto',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 45, top: 10),
+                                child: Text(
+                                  'Medecin General',
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60),
+                                child: Divider(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 60, top: 10),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 75, top: 6.5),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ],
+  ),
+);
+
+
+
+
+
+Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.album),
+            title: Text('Card Title'),
+            subtitle: Text('Card Subtitle'),
+          ),
+          ButtonBar(
+            children: <Widget>[
+              FlatButton(
+                child: const Text('BUTTON 1'),
+                onPressed: () {/* ... */},
+              ),
+              FlatButton(
+                child: const Text('BUTTON 2'),
+                onPressed: () {/* ... */},
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+
+
+
+    Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 3,
+                      height: MediaQuery.of(context).size.height / 3,
+                      color: Colors.amber,
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: MediaQuery.of(context).size.width / 6.2,
+                            backgroundImage:
+                                const AssetImage('assets/images/log.jpg'),
+                            backgroundColor: Colors.transparent,
+                          ),
+                          // Container(
+                          //   width: MediaQuery.of(context).size.width / 3,
+                          //   height: MediaQuery.of(context).size.height,
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(10.0),
+                          //     image: const DecorationImage(
+                          //       image: AssetImage('assets/images/docto.png'),
+                          //       fit: BoxFit.fill,
+                          //     ),
+                          //   ),
+                          // ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: MediaQuery.of(context).size.height,
+                            color: Colors.orange,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  child: Text(
+                                    ' ${doctor.name}',
+                                  ),
+                                ),
+                                SizedBox(
+                                  child: Text(
+                                    'spécialité : ${doctor.specialty}',
+                                  ),
+                                ),
+                                SizedBox(
+                                  child: Text(
+                                    '${doctor.number}',
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.person_2_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () async {
+                                        SharedPreferences pref =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        await pref.setInt('doctorId',
+                                            _doctors[index].user_id ?? 0);
+                                        Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (_, __, ___) =>
+                                                const Rdv(),
+                                          ),
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.calendar_month_sharp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ));

@@ -1,0 +1,927 @@
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:intl/intl.dart';
+
+class agendaMedecin extends StatefulWidget {
+  const agendaMedecin({super.key});
+
+  @override
+  State<agendaMedecin> createState() => _agendaMedecinState();
+}
+
+class _agendaMedecinState extends State<agendaMedecin> {
+  final controller = TextEditingController();
+  GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
+  // late TextEditingController _controller1;
+  late TextEditingController _controller2;
+  // late TextEditingController _controller3;
+  // late TextEditingController _controller4;
+
+  List<Widget> champs = [];
+  Widget champDateTime() {
+    return DateTimePicker(
+      type: DateTimePickerType.dateTime,
+      dateMask: 'd MMMM, yyyy - hh:mm a',
+      controller: _controller2,
+      //initialValue: _initialValue,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      //icon: Icon(Icons.event),
+      dateLabelText: 'Date Time',
+      use24HourFormat: false,
+      locale: const Locale('en', 'US'),
+      onChanged: (val) => setState(() => _valueChanged2 = val),
+      validator: (val) {
+        setState(() => _valueToValidate2 = val ?? '');
+        return null;
+      },
+      onSaved: (val) => setState(() => _valueSaved2 = val ?? ''),
+    );
+  }
+
+  //String _initialValue = '';
+  String _valueChanged1 = '';
+  String _valueToValidate1 = '';
+  String _valueSaved1 = '';
+  String _valueChanged2 = '';
+  String _valueToValidate2 = '';
+  String _valueSaved2 = '';
+  String _valueChanged3 = '';
+  String _valueToValidate3 = '';
+  String _valueSaved3 = '';
+  String _valueChanged4 = '';
+  String _valueToValidate4 = '';
+  String _valueSaved4 = '';
+
+  @override
+  void initState() {
+    super.initState();
+    Intl.defaultLocale = 'fr_FR';
+    //_initialValue = DateTime.now().toString();
+    // _controller1 = TextEditingController(text: DateTime.now().toString());
+    _controller2 = TextEditingController(text: DateTime.now().toString());
+    // _controller3 = TextEditingController(text: DateTime.now().toString());
+
+    String lsHour = TimeOfDay.now().hour.toString().padLeft(2, '0');
+    String lsMinute = TimeOfDay.now().minute.toString().padLeft(2, '0');
+
+    // _controller4 = TextEditingController(text: '$lsHour:$lsMinute');
+
+    _getValue();
+  }
+
+  Future<void> _getValue() async {
+    await Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        //_initialValue = '2000-10-22 14:30';
+        // _controller2.text = DateTime.now().toString();
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Form(
+          key: _oFormKey,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 50, right: 50),
+            child: Column(
+              children: [
+                Container(
+                  child: Text(
+                    'Création d\'un Agenda',
+                    style: TextStyle(
+                        color: bleu,
+                        fontSize: MediaQuery.of(context).size.width / 35),
+                  ),
+                ),
+                Column(
+                  children: champs,
+                ),
+                const SizedBox(height: 20),
+                // Text(
+                //   'DateTimePicker data value onChanged:',
+                //   style: TextStyle(fontWeight: FontWeight.bold),
+                // ),
+                // SelectableText(_valueChanged1),
+                // SelectableText(_valueChanged2),
+                // SelectableText(_valueChanged3),
+                // SelectableText(_valueChanged4),
+                // SizedBox(height: 10),
+                Center(
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            champs.add(champDateTime());
+                          });
+                        },
+                        child: const Text('Créer un agenda'),
+                      ),
+                      const SizedBox(width: 20),
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            Colors.yellow,
+                          ),
+                        ),
+                        onPressed: () {
+                          final loForm = _oFormKey.currentState;
+
+                          if (loForm?.validate() == true) {
+                            loForm?.save();
+                          }
+                        },
+                        child: const Text(
+                          'Enrégistrer',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+ child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: SizedBox(
+            width: 12,
+            height: 12,
+            child: ListView.builder(
+              itemCount: allUsers.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      left: 50.0, right: 50.0, bottom: 50, top: 3.5),
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      boxShadow: shadows,
+                      border: Border.all(
+                        style: BorderStyle.solid,
+                        color: bleu,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Avec: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: bleu,
+                                ),
+                              ),
+                              Text(
+                                'Dr ${allUsers[index].name}',
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Contact: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: bleu,
+                                ),
+                              ),
+                              Text(
+                                '${allUsers[index].email}',
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                              const Text(
+                                '/',
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                              Text(
+                                '${allUsers[index].number}',
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Pour le: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: bleu,
+                                ),
+                              ),
+                              Text(
+                                ' ${allUsers[index].date}',
+                              ),
+                              const Text(
+                                ' à: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: bleu,
+                                ),
+                              ),
+                              Text(
+                                '${allUsers[index].time}',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )),
+
+
+
+
+
+
+
+
+          
+
+
+
+
+ Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 2.0),
+                              child: Container(
+                                width: 118,
+                                height: 118,
+                                decoration: BoxDecoration(
+                                  boxShadow: shadows,
+                                  image: doctorsSearch!.image != null
+                                      ? DecorationImage(
+                                          image: NetworkImage(
+                                              '${doctorsSearch!.image}'),
+                                          fit: BoxFit.cover)
+                                      : const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/man.png'),
+                                          fit: BoxFit.cover),
+                                  border: Border.all(
+                                    style: BorderStyle.solid,
+                                    color:
+                                        bleu,
+                                  ),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 5,
+                                  right: 1.5,
+                                  bottom: 5,
+                                  top: 3.5,
+                                ),
+                                child: Container(
+                                  width: 250,
+                                  height: 118,
+                                  decoration: BoxDecoration(
+                                    boxShadow: shadows,
+                                    border: Border.all(
+                                      style: BorderStyle.solid,
+                                      color: const Color.fromARGB(
+                                          255, 43, 89, 109),
+                                    ),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Dr: ',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Color.fromARGB(
+                                                    255, 43, 89, 109),
+                                              ),
+                                            ),
+                                            Text(
+                                              '${doctorsSearch!.name}',
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Contact: ',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Color.fromARGB(
+                                                    255, 43, 89, 109),
+                                              ),
+                                            ),
+                                            Text(
+                                              '${doctorsSearch!.email}',
+                                              style: const TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Spécialité: ',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Color.fromARGB(
+                                                    255, 43, 89, 109),
+                                              ),
+                                            ),
+                                            Text(
+                                              ' ${doctorsSearch!.specialty}',
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            IconButton(
+                                              onPressed: () async {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailsMedecin(
+                                                      usersId:
+                                                          doctorsSearch!.id,
+                                                      role: role,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              icon: const Icon(
+                                                Icons.person_2_rounded,
+                                                color: Color.fromARGB(
+                                                  255,
+                                                  43,
+                                                  89,
+                                                  109,
+                                                ),
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Rdv(
+                                                          medecinId:
+                                                              doctorsSearch!
+                                                                  .user_id,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                  icon: const Icon(
+                                                    Icons.calendar_month,
+                                                    color: Color.fromARGB(
+                                                        255, 43, 89, 109),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    likeOrUnlikeDoctors(
+                                                      doctorsSearch? doctorsSearch!.user_id ??
+                                                          0 : null,
+                                                    );
+                                                  },
+                                                  // icon: Icon(Icons.favorite),
+                                                  icon: const Icon(
+                                                    // liked
+                                                    // ?
+                                                    Icons.favorite,
+                                                    // : Icons.favorite_outline,
+                                                    color:
+                                                        // liked
+                                                        // ?
+                                                        // const Color.fromARGB(
+                                                        //     255,
+                                                        //     43,
+                                                        //     89,
+                                                        //     109,
+                                                        //   )
+                                                        // :
+                                                        Color.fromARGB(
+                                                      255,
+                                                      43,
+                                                      89,
+                                                      109,
+                                                    ),
+                                                  ),
+                                                ),
+                                                // const SizedBox(width: 4),
+                                                // Text(
+                                                //   '',
+                                                // ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+
+
+
+
+                        SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 50,
+            child: EasySearchBar(
+                backgroundColor: Colors.white,
+                title: const Text(
+                  'Chercher',
+                  style: TextStyle(fontSize: 15),
+                ),
+                onSearch: (value) => setState(() {
+                      searchValue = value;
+                      _searchDoctors();
+                    }),
+                suggestions: _doctors
+                    .map(
+                      (e) => e.name.toString(),
+                    )
+                    .toList()),
+          ),
+
+
+         
+
+
+
+                  
+
+
+
+          
+          searchValue.isEmpty
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 1.5,
+                  //return
+                  child: ListView.builder(
+                    itemCount: _doctors.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2.0),
+                            child: Container(
+                              width: 118,
+                              height: 118,
+                              decoration: BoxDecoration(
+                                boxShadow: shadows,
+                                image: _doctors[index].image != null
+                                    ? DecorationImage(
+                                        image: NetworkImage(
+                                            '${_doctors[index].image}'),
+                                        fit: BoxFit.cover)
+                                    : const DecorationImage(
+                                        image:
+                                            AssetImage('assets/images/man.png'),
+                                        fit: BoxFit.cover),
+                                border: Border.all(
+                                  style: BorderStyle.solid,
+                                  color: bleu,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 5,
+                                right: 1.5,
+                                bottom: 5,
+                                top: 3.5,
+                              ),
+                              child: Container(
+                                width: 250,
+                                height: 118,
+                                decoration: BoxDecoration(
+                                  boxShadow: shadows,
+                                  border: Border.all(
+                                    style: BorderStyle.solid,
+                                    color:
+                                        bleu,
+                                  ),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Dr: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: bleu,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${_doctors[index].name}',
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Contact: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: bleu,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${_doctors[index].email}',
+                                            style: const TextStyle(
+                                              fontStyle: FontStyle.italic,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Spécialité: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: bleu,
+                                            ),
+                                          ),
+                                          Text(
+                                            ' ${_doctors[index].specialty}',
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () async {
+                                              docId = _doctors[index].id;
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DetailsMedecin(
+                                                    usersId: _doctors[index].id,
+                                                    role: role,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.person_2_rounded,
+                                              color: Color.fromARGB(
+                                                255,
+                                                43,
+                                                89,
+                                                109,
+                                              ),
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (context) => Rdv(
+                                                        medecinId:
+                                                            _doctors[index]
+                                                                .user_id,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                icon: const Icon(
+                                                  Icons.calendar_month,
+                                                  color: Color.fromARGB(
+                                                      255, 43, 89, 109),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  likeOrUnlikeDoctors(
+                                                    _doctors[index].user_id,
+                                                  );
+                                                },
+                                                // icon: Icon(Icons.favorite),
+                                                icon: const Icon(
+                                                  // liked
+                                                  // ?
+                                                  Icons.favorite,
+                                                  // : Icons.favorite_outline,
+                                                  color:
+                                                      // liked
+                                                      // ?
+                                                      // const Color.fromARGB(
+                                                      //     255,
+                                                      //     43,
+                                                      //     89,
+                                                      //     109,
+                                                      //   )
+                                                      // :
+                                                      Color.fromARGB(
+                                                    255,
+                                                    43,
+                                                    89,
+                                                    109,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 4),
+                                              Text(
+                                                '${_doctors[index].likesCount ?? 0}',
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ))
+              : SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Container(
+                          width: 118,
+                          height: 118,
+                          decoration: BoxDecoration(
+                            boxShadow: shadows,
+                            image: doctorsSearch != null
+                                ? doctorsSearch!.image != null
+                                    ? DecorationImage(
+                                        image: NetworkImage(
+                                            '${doctorsSearch!.image}'),
+                                        fit: BoxFit.cover)
+                                    : const DecorationImage(
+                                        image:
+                                            AssetImage('assets/images/man.png'),
+                                        fit: BoxFit.cover)
+                                : null,
+                            border: Border.all(
+                              style: BorderStyle.solid,
+                              color: bleu,
+                            ),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 5,
+                            right: 1.5,
+                            bottom: 5,
+                            top: 3.5,
+                          ),
+                          child: Container(
+                            width: 250,
+                            height: 118,
+                            decoration: BoxDecoration(
+                              boxShadow: shadows,
+                              border: Border.all(
+                                style: BorderStyle.solid,
+                                color: bleu,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'Dr: ',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              bleu,
+                                        ),
+                                      ),
+                                      Text(
+                                        '${doctorsSearch != null ? doctorsSearch!.name : null}',
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'Contact: ',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              bleu,
+                                        ),
+                                      ),
+                                      Text(
+                                        '${doctorsSearch != null ? doctorsSearch!.email : null}',
+                                        style: const TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'Spécialité: ',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              bleu,
+                                        ),
+                                      ),
+                                      Text(
+                                        ' ${doctorsSearch != null ? doctorsSearch!.specialty : null}',
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () async {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailsMedecin(
+                                                usersId: doctorsSearch!.id,
+                                                role: role,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        icon: const Icon(
+                                          Icons.person_2_rounded,
+                                          color: Color.fromARGB(
+                                            255,
+                                            43,
+                                            89,
+                                            109,
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) => Rdv(
+                                                    medecinId:
+                                                        doctorsSearch!.user_id,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.calendar_month,
+                                              color: bleu,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              likeOrUnlikeDoctors(
+                                                doctorsSearch!.user_id ?? 0,
+                                              );
+                                            },
+                                            // icon: Icon(Icons.favorite),
+                                            icon: const Icon(
+                                              // liked
+                                              // ?
+                                              Icons.favorite,
+                                              // : Icons.favorite_outline,
+                                              color:
+                                                  // liked
+                                                  // ?
+                                                  // const Color.fromARGB(
+                                                  //     255,
+                                                  //     43,
+                                                  //     89,
+                                                  //     109,
+                                                  //   )
+                                                  // :
+                                                  Color.fromARGB(
+                                                255,
+                                                43,
+                                                89,
+                                                109,
+                                              ),
+                                            ),
+                                          ),
+                                          // const SizedBox(width: 4),
+                                          // Text(
+                                          //   '',
+                                          // ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
